@@ -47,6 +47,10 @@ module ActionController
 
     [:_render_option_json, :_render_with_renderer_json].each do |renderer_method|
       define_method renderer_method do |resource, options|
+        puts "\n=====================================================================\n"
+        puts "Using: active_model_serializer render function\n"
+        puts "options: #{options.inspect}"
+        puts "\n=====================================================================\n"
         serializer = build_json_serializer(resource, options)
 
         if serializer
@@ -88,7 +92,7 @@ module ActionController
         options[:scope] = serialization_scope unless options.has_key?(:scope)
 
         if resource.respond_to?(:to_ary)
-          options[:resource_name] = controller_name 
+          options[:resource_name] = controller_name
           options[:namespace] = namespace_for_serializer if namespace_for_serializer
         end
         puts "\n=====================================================================\n"
