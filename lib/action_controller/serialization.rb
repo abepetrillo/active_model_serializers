@@ -91,7 +91,9 @@ module ActionController
           options[:resource_name] = controller_name 
           options[:namespace] = namespace_for_serializer if namespace_for_serializer
         end
-
+        puts "\n=====================================================================\n"
+        puts serializer.to_s
+        puts "\n=====================================================================\n"
         serializer.new(resource, options)
       end
     end
